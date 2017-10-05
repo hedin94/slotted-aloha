@@ -1,4 +1,6 @@
-%%
+%%%%%%%%%%%%%%%%%%%%
+%% Slotted ALOHA  %%
+%%%%%%%%%%%%%%%%%%%%
 m = 100;
 T = 1000;
 lambda = exp(-1);
@@ -8,7 +10,7 @@ qr = 0.01;
 %% Backlog
 figure
 plot(backlog);
-title('Backlog');
+title('Backlog {\lambda=1/e, q_r=0.01}');
 xlabel('slot');
 ylabel('backlogged nodes');
 x = 1:T;
@@ -16,7 +18,7 @@ x = 1:T;
 %% Arrival and departure of packets
 figure
 plot(x,arrival,x,departure);
-title('Arrival and departure {\lambda=1/e}');
+title('Arrival and departure {\lambda=1/e, q_r=0.01}');
 xlabel('slot');
 ylabel('packets');
 
@@ -80,25 +82,29 @@ qr = 0.01;
 
 figure
 plot(backlog);
-title('Backlog - lambda=1/2, qr=0.01');
+title('Backlog {\lambda=1/2, q_r=0.01}');
+xlabel('slot');
+ylabel('backlogged nodes');
 x = 1:T;
 figure
 plot(x,arrival,x,departure);
-title('Arrival and departure lambda=1/2, qr=0.01');
+title('Arrival and departure {\lambda=1/2, q_r=0.01}');
+xlabel('slot');
+ylabel('packets');
 
 %% Assignment 6
 m = 100;
 T = 1000;
-lambda = 1/2;
+lambda = exp(-1);
 qr = 0.1;
 [backlog, arrival, departure] = slotted_aloha(m,T,lambda,qr);
 
 figure
 plot(backlog);
-title('Backlog - lambda=1/2, qr=0.1');
+title('Backlog {\lambda=1/e, q_r=0.1}');
 figure
 plot(x,arrival,x,departure);
-title('Arrival and departure - lambda=1/2, qr=0.1');
+title('Arrival and departure {lambda=1/e, q_r=0.1}');
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -114,11 +120,15 @@ lambda = exp(-1);
 figure
 plot(x,backlog,x,backlog_estimate(1:1000));
 title('Backlog');
+xlabel('slot');
+ylabel('backlogged nodes');
 
 %% Arrival and departure
 figure
 plot(x,arrival,x,departure);
 title('Arrival and departure');
+xlabel('slot');
+ylabel('packets');
 
 %% Histogram of backlog
 figure
