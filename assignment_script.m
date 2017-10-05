@@ -9,12 +9,16 @@ qr = 0.01;
 figure
 plot(backlog);
 title('Backlog');
+xlabel('slot');
+ylabel('backlogged nodes');
 x = 1:T;
 
 %% Arrival and departure of packets
 figure
 plot(x,arrival,x,departure);
-title('Arrival and departure lambda=1/e');
+title('Arrival and departure {\lambda=1/e}');
+xlabel('slot');
+ylabel('packets');
 
 %% Histogram of backlog
 figure
