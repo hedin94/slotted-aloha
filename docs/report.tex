@@ -2,6 +2,7 @@
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
 
 \begin{document}
 
@@ -115,5 +116,22 @@ With pseudo-bayesian stabilization the backlog will be estimated. Figure~\ref{fi
 \end{figure}
 
 The approximate delay of the system depends on the arrival rate $\lambda$. In figure~\ref{fig:approximate-delay} the approximated delay for successful packet transmission has been plotted. Both the delay from the formula (blue) and from the simulation results (red) can be seen for arrival rate $\lambda = 0.05:0.05:0.35$. The actual delay from the simulation result is almost the same as the theoretical delay for small arrival rates. But for larger arrival rates the actual delay is smaller. 
+
+\newpage
+\appendix
+\section{Slotted ALOHA}
+\lstinputlisting{../slotted_aloha.m}
+
+\section{Slotted ALOHA with Pseudo-Bayesian Stabilization}
+\lstinputlisting{../stabilized_slotted_aloha.m}
+
+\section{Plots}
+\lstinputlisting{../plots.m}
+
+\section{Utility functions}
+\lstinputlisting{../attempt_rate.m}
+\lstinputlisting{../average_delay.m}
+
+
 
 \end{document}
