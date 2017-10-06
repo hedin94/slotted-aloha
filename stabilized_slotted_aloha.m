@@ -1,4 +1,4 @@
-function [backlog, backlog_estimate, arrival, departure] = stabilized_slotted_aloha(m, T, lambda)
+function [backlog, backlog_estimate, arrival, departure, W] = stabilized_slotted_aloha(m, T, lambda)
 
 % State of the nodes
 % 0: Idle
@@ -80,7 +80,7 @@ while t < T
     departure(t) = transmPckts;
 end
 
-W = departure_slot - arrival_slot;
-W_avg = mean(W);
+W = departure_slot(1:transmPckts) - arrival_slot(1:transmPckts);
+W = mean(W);
 
-fprintf('\nqa: %.3f,\nTransmitted packets: %u,\nMean delay: %.0f\n',qa,transmPckts,W_avg);
+fprintf('\nqa: %.3f,\nTransmitted packets: %u,\nMean delay: %.0f\n',qa,transmPckts,W);

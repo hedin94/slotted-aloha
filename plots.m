@@ -114,7 +114,7 @@ m = 100;
 T = 1000;
 x = 1:T;
 lambda = exp(-1);
-[backlog, backlog_estimate, arrival, departure] = stabilized_slotted_aloha(m,T,lambda);
+[backlog, backlog_estimate, arrival, departure, W] = stabilized_slotted_aloha(m,T,lambda);
  
 %% Backlog and backlog estimate
 figure
@@ -173,8 +173,23 @@ figure
 plot(0:m,Ps_theory,0:m,Pnew_theory);
 Ps_avg_theory = mean(Ps_theory);
 
-%%
-% TODO
- lambda = 0.05:0.05:0.35;
+%% Approximate delay analysis
+lambda = 0.05:0.05:0.35;
+W_theory = average_delay(lambda);
+figure
+plot(lambda,W_theory);
+title('');
+xlabel('arrival rate {\lambda}')
+ylabel('delay')
 
-plot(arrival,x,departure,x)
+%% Average delay from simulation
+lambda = 0.05:0.05:0.35;
+W = zeros(1,length(lambda));
+for i = 1:length(lambda)
+    [backlog, backlog_estimate, arrival, departure, Wi] = stabilized_slotted_aloha(m,T,lambda(i));
+    W(i) = Wi;
+end
+plot(lambda,W_theory, lambda,W);
+title('Theoretical delay vs Simulation delay');
+xlabel('arrival rate {\lambda}')
+ylabel('delay')

@@ -5,13 +5,13 @@
 
 \begin{document}
 
-%\title{TSIN01 Information Networks}
 \title{%
   TSIN01 Information Networks \\
   \large Slotted ALOHA Algorithm \\
   and Pseudo-Bayesian Stabilization}
 \author{Rasmus Hedin \\
-rashe877}
+  $\langle rashe877@student.liu.se \rangle$ \\
+940524-3396}
 
 \maketitle
 
@@ -107,6 +107,13 @@ In this section the simulations will be executed with the slotted ALOHA protocol
 
 With pseudo-bayesian stabilization the backlog will be estimated. Figure~\ref{fig:backlog-stabilized} shows the simulated backlog (blue) and the estimated backlog (red). As we can see the estimate follows the real backlog very good which will give a good retransmission rate. The delay is low as we can see in figure~\ref{fig:arrival-departure-stabilized} since the gap between the graphs is very small. This is an indication that the system is stable.
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.5\textwidth]{figures/approximate-delay.eps}
+  \caption{Approximate delay}
+  \label{fig:approximate-delay}
+\end{figure}
 
+The approximate delay of the system depends on the arrival rate $\lambda$. In figure~\ref{fig:approximate-delay} the approximated delay for successful packet transmission has been plotted. Both the delay from the formula (blue) and from the simulation results (red) can be seen for arrival rate $\lambda = 0.05:0.05:0.35$. The actual delay from the simulation result is almost the same as the theoretical delay for small arrival rates. But for larger arrival rates the actual delay is smaller. 
 
 \end{document}
