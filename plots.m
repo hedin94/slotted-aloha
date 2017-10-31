@@ -21,11 +21,13 @@ plot(x,arrival,x,departure);
 title('Arrival and departure {\lambda=1/e, q_r=0.01}');
 xlabel('slot');
 ylabel('packets');
+legend('arrivals','departures');
 
 %% Histogram of backlog
 figure
 histogram(backlog);
 title('Histogram of backlogged nodes');
+xlabel('backlogged nodes');
 
 %% Steady-states of the Markov chain
 tbl = tabulate(backlog);
@@ -39,9 +41,12 @@ figure
 subplot(3,1,1);
 plot(x,backlog);
 title('Backlog');
+xlabel('slot');
+ylabel('backlogged nodes');
 subplot(3,1,2);
 plot(x,G);
 title('Attempt rate');
+xlabel('slot');
 
 % Probability of success
 G = attempt_rate(m, backlog, qa, qr);
@@ -50,6 +55,7 @@ Ps_avg = mean(Ps);
 subplot(3,1,3);
 plot(x,Ps);
 title('Probability of success');
+xlabel('slot');
 
 %%
 Pnew = (m-backlog)*qa;
@@ -91,6 +97,7 @@ plot(x,arrival,x,departure);
 title('Arrival and departure {\lambda=1/2, q_r=0.01}');
 xlabel('slot');
 ylabel('packets');
+legend('arrivals','departures');
 
 %% Assignment 6
 m = 100;
@@ -102,9 +109,14 @@ qr = 0.1;
 figure
 plot(backlog);
 title('Backlog {\lambda=1/e, q_r=0.1}');
+xlabel('slot');
+ylabel('backlogged nodes');
 figure
 plot(x,arrival,x,departure);
 title('Arrival and departure {lambda=1/e, q_r=0.1}');
+xlabel('slot');
+ylabel('packets');
+legend('arrivals','departures');
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,6 +141,7 @@ plot(x,arrival,x,departure);
 title('Arrival and departure');
 xlabel('slot');
 ylabel('packets');
+legend('arrivals','departures');
 
 %% Histogram of backlog
 figure
@@ -147,6 +160,8 @@ figure
 subplot(3,1,1);
 plot(x,backlog);
 title('Backlog');
+xlabel('slot');
+ylabel('backlogged nodes');
 subplot(3,1,2);
 plot(x,G);
 title('Attempt rate');
@@ -193,3 +208,4 @@ plot(lambda,W_theory, lambda,W);
 title('Theoretical delay vs Simulation delay');
 xlabel('arrival rate {\lambda}')
 ylabel('delay')
+legend('theoretical delay', 'simulated delay');

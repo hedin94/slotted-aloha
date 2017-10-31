@@ -20,6 +20,10 @@
 Consider a slotted multiaccess system with m = 100 nodes that have no-buffering. The packet arrivals are Poisson distributed with overall arrival rate $\lambda = 1/e$ packets per slot. The system runs for a duration of t = 1000 slots. Initially, all nodes are unbacklogged. The slotted ALOHA protocol, as well as a pseudo-bayesian stabilization version of the protocol have been implemented in Matlab.
 
 \section{Slotted ALOHA}
+\begin{figure}[h]
+  \includegraphics[width=.9\textwidth]{figures/flowchart.png}
+\end{figure}
+
 \subsection{$\lambda = 1/e, q_r = 0.01$}
 \begin{figure}[h]
   \begin{subfigure}{.5\textwidth}
@@ -35,7 +39,7 @@ Consider a slotted multiaccess system with m = 100 nodes that have no-buffering.
   \caption{}
 \end{figure}
 
-3) In the first simulation the ALOHA protocol have been executed with retransmission rate $q_r=0.01$ and arrival rate $\lambda=1/e$. In figure~\ref{fig:backlog} the number of packets in the backlogged have been plotted. We can see that there is always some backlogged nodes. Figure~\ref{fig:arrival-departure} shows arrived packets and departured packets. The graph for arrived packets is always over the graph for departured packets which means that we have som delay in the system. A larger gap between the graphs would mean a longer delay.
+3) In the first simulation the ALOHA protocol have been executed with retransmission rate $q_r=0.01$ and arrival rate $\lambda=1/e$. In figure~\ref{fig:backlog} the number of packets in the backlogged have been plotted. We can see that the backlog starts at zero and then increase. The backlog increases with one or more at a collision but it can only decrease by one step at a time since there can only be one succesful transmission at a time. This can be seen in the left graph. Figure~\ref{fig:arrival-departure} shows arrived packets (blue legend) and departured packets (red legend). The graph for arrived packets increase one step for each new arriving packet and the graph for departures increase one step at a time when a packet is successfully transmitted. The gap between these two graphs represents the delay of the system where a larger gap equals a longer delay. The horizontal distance between the two graphs at a $y=n$ is the delay for arriving packet number $n$. 
 
 \begin{figure}[h]
   \begin{subfigure}{.5\textwidth}
@@ -72,6 +76,22 @@ Consider a slotted multiaccess system with m = 100 nodes that have no-buffering.
 In this run of the simulation $\lambda=1/2$ instead and $q_r$ is kept at $0.01$. this will increase the arrival rate and as we can see in figure~\ref{fig:backlog2} the backlog increases faster and the average number of backlogged nodes is also higher than in the previous plot. The delay have also increased since the gap between the graphs in figure~\ref{fig:arrival-departure-2} have increased. This is expected since now packets arrive at faster rate giving more collisions.\\\\\\\\
 
 \subsection{$\lambda = 1/e, q_r = 0.1$}
+In this run of the simulation $\lambda=1/e$, and $q_r=0.1$. This will make the backlog clear faster as we can see in figure~\ref{fig:backlog3-2}. Figure~\ref{fig:arrival-departure-3-2} shows that the delay is low and that packets depart very soon after arriving. However, sometimes we get unlucky where the backlog goes above a threshold and it will never clear and give no succesful transmissions as seen in figure~\ref{fig:backlog3}. This is also very clear in figure~\ref{fig:arrival-departure-3} where we can see that there is almost no successful transmission when the backlog becomes large.
+
+\begin{figure}[h]
+  \begin{subfigure}{.5\textwidth}
+    \includegraphics[width=\textwidth]{figures/backlog3-2.eps}
+    \caption{Backlog}
+    \label{fig:backlog3-2}
+  \end{subfigure}%
+  \begin{subfigure}{.5\textwidth}
+    \includegraphics[width=\textwidth]{figures/arrival-departure-3-2.eps}
+    \caption{Arrival and departure}
+    \label{fig:arrival-departure-3-2}
+  \end{subfigure}
+  \caption{}
+\end{figure}
+
 \begin{figure}[h]
   \begin{subfigure}{.5\textwidth}
     \includegraphics[width=\textwidth]{figures/backlog3.eps}
@@ -86,11 +106,15 @@ In this run of the simulation $\lambda=1/2$ instead and $q_r$ is kept at $0.01$.
   \caption{}
 \end{figure}
 
-In this run of the simulation $\lambda=1/e$, and $q_r=0.1$. This will make the backlog clear faster, but as we can see in figure~\ref{fig:backlog3}, when the backlog goes above a threshold it will only increase and the packets can't be retransmitted. This is also very clear in figure~\ref{fig:arrival-departure-3} where we can see that there is almost no successful transmission when the backlog becomes large.
+
+\newpage
 
 \section{Slotted ALOHA with Pseudo-Bayesian Stabilization}
 
 In this section the simulations will be executed with the slotted ALOHA protocol, but now $q_r$ is adapted by the pseudo-bayesian stabilization. $\lambda=1/e$ is known.
+\begin{figure}[h]
+  \includegraphics[width=.9\textwidth]{figures/flowchart-stabilized.png}
+\end{figure}
 
 \begin{figure}[h]
   \begin{subfigure}{.5\textwidth}
@@ -115,7 +139,7 @@ With pseudo-bayesian stabilization the backlog will be estimated. Figure~\ref{fi
   \label{fig:approximate-delay}
 \end{figure}
 
-The approximate delay of the system depends on the arrival rate $\lambda$. In figure~\ref{fig:approximate-delay} the approximated delay for successful packet transmission has been plotted. Both the delay from the formula (blue) and from the simulation results (red) can be seen for arrival rate $\lambda = 0.05:0.05:0.35$. The actual delay from the simulation result is almost the same as the theoretical delay for small arrival rates. But for larger arrival rates the actual delay is smaller. 
+The approximate delay of the system depends on the arrival rate $\lambda$. In figure~\ref{fig:approximate-delay} the approximated delay for successful packet transmission has been plotted. Both the delay from the formula (blue) and from the simulation results (red) can be seen for arrival rate $\lambda = 0.05:0.05:0.35$. The actual delay from the simulation result is almost the same as the theoretical delay for small arrival rates. But for larger arrival rates the actual simulation delay is smaller than the theoretical delay as we can see in figure~\ref{fig:approximate-delay}. 
 
 \newpage
 \appendix
